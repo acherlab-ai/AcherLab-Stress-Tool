@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=800&size=32&duration=2500&pause=500&color=19D7FF&center=true&vCenter=true&width=600&lines=AcherLab+Stress+Tool;FOR+AUTHORIZED+USE+ONLY;Security+Testing+Framework" alt="header" />
 </p>
@@ -59,3 +60,7 @@ python3 Attack.py --url http://target.com --threads 500 --duration 3600
   <sub>&copy; 2026 AcherLab. For authorized security testing only.</sub><br/>
   <sub><b>AcrhorLab khong chiu trach nhiem voi viec su dung repo nay.</b></sub>
 </p>
+=======
+# AcherLab-Stress-Tool
+AcherLab Stress Testing Tool - ONLY for authorized security testing. AcherLab khong chiu trach nhiem voi viec su dung repo nay.
+>>>>>>> 317e25987268f0248ac913fd08d8a294f94b9d3d
